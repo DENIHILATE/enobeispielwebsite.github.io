@@ -1,0 +1,345 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>[FIRMENNAME] – Professionelle Reinigungsfirma in [STADT]</title>
+    <meta name="description" content="Zuverlässige Gebäudereinigung in [STADT] & Umgebung: Unterhaltsreinigung, Büroreinigung, Grundreinigung, Fensterreinigung u.v.m. Kostenlose Beratung & faires Angebot." />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content="[FIRMENNAME] – Reinigungsservice in [STADT]" />
+    <meta property="og:description" content="Professionelle Reinigung für Privat & Gewerbe. Jetzt kostenloses Angebot anfordern." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="cover.jpg" />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- JSON-LD: Local Business / Cleaning Service -->
+    <script type="application/ld+json">
+        {
+          "@context":"https://schema.org",
+          "@type":"LocalBusiness",
+          "name":"[FIRMENNAME]",
+          "image":"https://example.com/cover.jpg",
+          "url":"https://example.com",
+          "telephone":"+49 [RUFNUMMER]",
+          "priceRange":"€€",
+          "address":{
+            "@type":"PostalAddress",
+            "streetAddress":"[STRASSE HAUSNUMMER]",
+            "addressLocality":"[STADT]",
+            "postalCode":"[PLZ]",
+            "addressCountry":"DE"
+          },
+          "geo":{
+            "@type":"GeoCoordinates",
+            "latitude": 0,
+            "longitude": 0
+          },
+          "areaServed":"[STADT] und Umgebung",
+          "openingHoursSpecification":[
+            {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"18:00"}
+          ],
+          "makesOffer":[
+            {"@type":"Offer","name":"Unterhaltsreinigung"},
+            {"@type":"Offer","name":"Büroreinigung"},
+            {"@type":"Offer","name":"Grundreinigung"},
+            {"@type":"Offer","name":"Fensterreinigung"},
+            {"@type":"Offer","name":"Baureinigung"}
+          ],
+          "sameAs":[]
+        }
+    </script>
+</head>
+<body>
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+        <p>Wir verwenden Cookies, um unsere Website zu verbessern. <a href="#datenschutz">Mehr erfahren</a>.</p>
+        <div class="cookie-actions">
+            <button id="cookieAccept" class="btn btn-primary">Zustimmen</button>
+            <button id="cookieDecline" class="btn btn-ghost">Ablehnen</button>
+        </div>
+    </div>
+
+    <header class="site-header">
+        <div class="container nav">
+            <a href="#" class="brand">
+                <img src="favicon.svg" alt="" width="28" height="28" />
+                <span>[FIRMENNAME]</span>
+            </a>
+            <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
+                <a href="#leistungen">Leistungen</a>
+                <a href="#preise">Preise</a>
+                <a href="#bewertungen">Bewertungen</a>
+                <a href="#kontakt" class="btn btn-small">Angebot</a>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <h1>Glanz. Ordnung. <span class="accent">Sorgfalt.</span></h1>
+                    <p>Reinigungsservice für <strong>Privat & Gewerbe</strong> in <strong>[STADT]</strong>. Transparent, pünktlich und gründlich – jedes Mal.</p>
+                    <div class="hero-cta">
+                        <a href="#kontakt" class="btn btn-primary">Kostenloses Angebot</a>
+                        <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
+                    </div>
+                    <ul class="trust">
+                        <li>✔️ Festes Team, keine Subunternehmer</li>
+                        <li>✔️ Umweltfreundliche Reinigungsmittel</li>
+                        <li>✔️ Haftpflichtversichert</li>
+                    </ul>
+                </div>
+                <div class="hero-card" aria-hidden="true">
+                    <div class="stat">
+                        <span class="stat-number">250+</span>
+                        <span class="stat-label">zufriedene Kunden</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.9★</span>
+                        <span class="stat-label">Durchschnittsbewertung</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24h</span>
+                        <span class="stat-label">Angebot</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leistungen -->
+        <section id="leistungen" class="section">
+            <div class="container">
+                <h2>Unsere Leistungen</h2>
+                <div class="cards grid-3">
+                    <article class="card">
+                        <h3>Unterhaltsreinigung</h3>
+                        <p>Laufende Reinigung von Wohnungen, Treppenhäusern und Büros – zuverlässig im vereinbarten Rhythmus.</p>
+                        <ul class="list">
+                            <li>Böden saugen/wischen</li>
+                            <li>Sanitär reinigen</li>
+                            <li>Oberflächen & Küchen</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Büroreinigung</h3>
+                        <p>Saubere Arbeitsplätze, Meetingräume und Küchen – auch außerhalb Ihrer Geschäftszeiten.</p>
+                        <ul class="list">
+                            <li>Müllentsorgung</li>
+                            <li>Desinfektion</li>
+                            <li>Fenster optional</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Grund- & Sonderreinigung</h3>
+                        <p>Tiefe Grundreinigungen, Baureinigung, Umzugsreinigung und Hartbodenpflege.</p>
+                        <ul class="list">
+                            <li>Hartboden-Grundreinigung</li>
+                            <li>Baureinigung grob/fein</li>
+                            <li>Kalk & Fugenreinigung</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Fenster- & Glasreinigung</h3>
+                        <p>Schlierenfrei: Fenster, Glastüren, Wintergärten, Schaufenster.</p>
+                        <ul class="list">
+                            <li>Innen & Außen</li>
+                            <li>Rahmen & Falze</li>
+                            <li>Leitern bis 6 m</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Haushaltshilfe</h3>
+                        <p>Regelmäßige Unterstützung im Haushalt – flexibel und diskret.</p>
+                        <ul class="list">
+                            <li>Wäsche & Bügeln</li>
+                            <li>Küche & Bad</li>
+                            <li>Aufräumen</li>
+                        </ul>
+                    </article>
+                    <article class="card">
+                        <h3>Individuell</h3>
+                        <p>Nennen Sie uns Ihren Bedarf – wir erstellen ein passgenaues Paket.</p>
+                        <ul class="list">
+                            <li>Flexible Intervalle</li>
+                            <li>Transparente Preise</li>
+                            <li>Festes Team</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preise -->
+        <section id="preise" class="section alt">
+            <div class="container">
+                <h2>Transparente Preise</h2>
+                <div class="pricing grid-3">
+                    <div class="price-card">
+                        <h3>Privat</h3>
+                        <p class="price">ab 24,90 €<span>/Std</span></p>
+                        <ul class="list small">
+                            <li>Regelmäßige Reinigung</li>
+                            <li>Flexible Termine</li>
+                            <li>Umweltfreundliche Mittel</li>
+                        </ul>
+                        <a class="btn btn-primary" href="#kontakt">Anfragen</a>
+                    </div>
+                    <div class="price-card highlight" aria-label="Beliebteste Option">
+                        <h3>Gewerbe</h3>
+                        <p class="price">ab 28,90 €<span>/Std</span></p>
+                        <ul class="list small">
+                            <li>Büros & Praxen</li>
+                            <li>Individuelle Leistungsverzeichnisse</li>
+                            <li>After-Hours möglich</li>
+                        </ul>
+                        <a class="btn btn-primary" href="#kontakt">Anfragen</a>
+                    </div>
+                    <div class="price-card">
+                        <h3>Spezial</h3>
+                        <p class="price">Angebot</p>
+                        <ul class="list small">
+                            <li>Grund-/Baureinigung</li>
+                            <li>Fenster/Glas</li>
+                            <li>Festpreis nach Besichtigung</li>
+                        </ul>
+                        <a class="btn btn-primary" href="#kontakt">Anfragen</a>
+                    </div>
+                </div>
+                <p class="note">Alle Preise zzgl. MwSt. für Gewerbe. Privatkunden inkl. MwSt. – Endpreise nach Objektgröße & Zustand.</p>
+            </div>
+        </section>
+
+        <!-- Bewertungen -->
+        <section id="bewertungen" class="section">
+            <div class="container">
+                <h2>Was Kunden sagen</h2>
+                <div class="testimonials">
+                    <blockquote>
+                        <p>„Zuverlässig, gründlich, fair. Unser Büro glänzt – klare Empfehlung!“</p>
+                        <footer>— M. Schneider, [STADT]</footer>
+                    </blockquote>
+                    <blockquote>
+                        <p>„Tolle Kommunikation und schnelle Terminvergabe. Fenster wie neu.“</p>
+                        <footer>— M. Kaya</footer>
+                    </blockquote>
+                    <blockquote>
+                        <p>„Endlich ein Dienstleister, der hält, was er verspricht.“</p>
+                        <footer>— M. Fischer</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Einsatzgebiet / Karte -->
+        <section class="section alt">
+            <div class="container">
+                <h2>Einsatzgebiet</h2>
+                <p>Wir sind in <strong>[STADT]</strong> und Umgebung aktiv (Umkreis ca. 25 km).</p>
+                <div class="map">
+                    <!-- Optional: ersetzen Sie den src mit Ihrem Google Maps Embed Link -->
+                    <iframe title="Karte von [FIRMENNAME]" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            src="https://maps.google.com/maps?q=[STADT]&t=&z=12&ie=UTF8&iwloc=&output=embed"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kontakt -->
+        <section id="kontakt" class="section">
+            <div class="container contact-grid">
+                <div>
+                    <h2>Angebot anfordern</h2>
+                    <p>Beschreiben Sie kurz Ihr Objekt. Wir melden uns innerhalb von 24 Stunden.</p>
+                    <!-- Works on Netlify (name="contact") / use Formspree by replacing action -->
+                    <form class="form" name="contact" method="POST" data-netlify="true">
+                        <input type="hidden" name="form-name" value="contact" />
+                        <div class="field">
+                            <label for="name">Name*</label>
+                            <input id="name" name="name" type="text" required />
+                        </div>
+                        <div class="field">
+                            <label for="email">E-Mail*</label>
+                            <input id="email" name="email" type="email" required />
+                        </div>
+                        <div class="field">
+                            <label for="phone">Telefon</label>
+                            <input id="phone" name="phone" type="tel" />
+                        </div>
+                        <div class="field">
+                            <label for="service">Leistung</label>
+                            <select id="service" name="service">
+                                <option>Unterhaltsreinigung</option>
+                                <option>Büroreinigung</option>
+                                <option>Grund-/Sonderreinigung</option>
+                                <option>Fenster-/Glasreinigung</option>
+                                <option>Sonstiges</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="message">Nachricht*</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Objektgröße, Turnus, Adresse..."></textarea>
+                        </div>
+                        <div class="field checkbox">
+                            <input id="privacy" type="checkbox" required />
+                            <label for="privacy">Ich akzeptiere die <a href="#datenschutz">Datenschutzerklärung</a>.</label>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Absenden</button>
+                    </form>
+                    <p class="contact-meta">
+                        Oder direkt: <a href="tel:+49[RUFNUMMER]">+49 [RUFNUMMER]</a> ·
+                        <a href="mailto:[INFO@DOMAIN]">[INFO@DOMAIN]</a>
+                    </p>
+                </div>
+                <aside class="contact-aside">
+                    <div class="info">
+                        <h3>Kontaktdaten</h3>
+                        <p>[FIRMENNAME]<br>[STRASSE HAUSNUMMER]<br>[PLZ] [STADT]</p>
+                        <p>Mo–Fr 08:00–18:00</p>
+                        <a class="btn btn-ghost" href="#impressum">Impressum</a>
+                    </div>
+                    <div class="badge">
+                        <span>Versichert</span>
+                        <span>Umweltfreundlich</span>
+                        <span>Regional</span>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="brand small">
+                <img src="favicon.svg" alt="" width="24" height="24" />
+                <span>[FIRMENNAME]</span>
+            </div>
+            <nav class="footer-links">
+                <a href="#impressum">Impressum</a>
+                <a href="#datenschutz">Datenschutz</a>
+                <a href="#leistungen">Leistungen</a>
+                <a href="#kontakt">Kontakt</a>
+            </nav>
+            <p class="copyright">© <span id="year"></span> [FIRMENNAME]. Alle Rechte vorbehalten.</p>
+        </div>
+
+        <!-- Simple placeholders for legal pages -->
+        <section id="impressum" class="legal">
+            <h2>Impressum</h2>
+            <p>[Verantwortlich nach § 5 TMG: Firmenname, Anschrift, Vertretungsberechtigte, USt-ID, Registerangaben]</p>
+        </section>
+        <section id="datenschutz" class="legal">
+            <h2>Datenschutzerklärung</h2>
+            <p>[Hinweise zu Kontaktformular, Hosting, Cookies, Analytik (falls vorhanden) etc.]</p>
+        </section>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
