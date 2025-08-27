@@ -15,6 +15,13 @@
     --shadow: 0 10px 30px rgba(2, 12, 27, 0.6);
 }
 
+@font-face {
+    font-family: 'AkiraExpanded';
+    src: url('fonts/Nexa-Extra.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -24,12 +31,68 @@ html, body {
     scroll-behavior: smooth;
 }
 
+/* Background-Layer */
+.bg-anim {
+    position: fixed;
+    inset: 0;
+    z-index: 0; /* Inhalt liegt drüber */
+    pointer-events: none;
+    /* 3 animierte Radials + feste Grundfarbe als SEPARATE Ebene */
+    background: radial-gradient(1200px 800px at 12% 18%, rgba(14,165,233,0.18), transparent 60%), radial-gradient(1000px 700px at 82% 25%, rgba(34,211,238,0.16), transparent 60%), radial-gradient(900px 900px at 50% 90%, rgba(56,189,248,0.11), transparent 65%), linear-gradient(#0b0e13, #0b0e13); /* Basisfarbe */
+
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    /* WICHTIG: Größe/Position NUR für die 3 Gradients angeben */
+    background-size: 140% 140%, 140% 140%, 140% 140%;
+    background-position: 12% 18%, 82% 25%, 50% 90%;
+    filter: saturate(1.05);
+    will-change: background-position, background-size, filter;
+    animation: bg-drift 24s ease-in-out infinite alternate;
+}
+
+/* Inhalt über dem BG */
+.site-header, main, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Animation */
+@keyframes bg-drift {
+    0% {
+        background-position: 12% 18%, 82% 25%, 50% 90%;
+    }
+
+    50% {
+        background-position: 16% 22%, 78% 28%, 48% 86%;
+    }
+
+    100% {
+        background-position: 10% 16%, 85% 22%, 52% 94%;
+    }
+}
+/* Inhalt über dem BG */
+.site-header, main, footer {
+    position: relative;
+    z-index: 1;
+}
+/* Body bleibt transparent */
+body {
+    background: transparent;
+}
+
+/* Respektiert System-Einstellung für reduzierte Bewegung */
+@media (prefers-reduced-motion: reduce) {
+    .bg-anim {
+        animation: none;
+    }
+}
+
 body {
     margin: 0;
     color: var(--text);
-    background: radial-gradient(1200px 800px at 10% 10%, rgba(14,165,233,0.12), transparent 60%), radial-gradient(1000px 600px at 90% 20%, rgba(34,211,238,0.12), transparent 60%), var(--bg);
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     line-height: 1.6;
+
+    padding-top: 64px;
 }
 
 .container {
@@ -40,11 +103,13 @@ body {
 
 /* Header / Nav */
 .site-header {
-    position: sticky;
+    position: fixed; /* statt sticky */
     top: 0;
-    z-index: 9999; /* vorher 50 */
+    left: 0;
+    right: 0;
+    z-index: 9999;
     backdrop-filter: saturate(1.2) blur(8px);
-    background: rgba(11,14,19,0.85); /* etwas deckender */
+    background: rgba(11,14,19,0.90);
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
@@ -57,13 +122,24 @@ body {
 
 .brand {
     display: flex;
-    align-items: center;
+    align-items: center; /* centers logo + text vertically */
     gap: .6rem;
-    font-weight: 700;
+    font-weight: 750;
+    font-size: 24px;
     letter-spacing: .2px;
     color: var(--text);
+    font-family: 'AkiraExpanded', sans-serif;
     text-decoration: none;
 }
+
+    .brand img {
+        display: block; /* remove baseline gap under the image */
+        height: 28px; /* keep logo size consistent */
+    }
+
+    .brand span {
+        line-height: 1; /* keeps text vertically centered with logo */
+    }
 
     .brand.small {
         font-size: .95rem;
@@ -520,6 +596,7 @@ input, select, textarea {
     }
 }
 
+/* am Ende von styles.css hinzufügen */
 :target {
     scroll-margin-top: 84px;
 }
@@ -527,3 +604,30 @@ input, select, textarea {
 .section, .legal {
     scroll-margin-top: 84px;
 }
+
+/* Falls die Variablen mal fehlen, setze Fallbacks */
+:root {
+    --text: #e9f0f7; /* helle Schrift */
+    --muted: #a7b3c2; /* sekundärer Text */
+    --panel: #0f141b; /* Kartenhintergrund */
+}
+
+/* Sichtbarkeit Team erzwingen */
+#team {
+    color: var(--text, #e9f0f7);
+}
+
+    #team .card {
+        background: var(--panel, #0f141b);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 16px;
+        padding: 20px;
+    }
+
+    #team h2, #team h3 {
+        color: var(--text, #e9f0f7);
+    }
+
+    #team p {
+        color: var(--muted, #a7b3c2);
+    }

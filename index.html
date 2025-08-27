@@ -9,7 +9,7 @@
     <link rel="preload" href="styles.css" as="style" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <meta property="og:title" content="E&F Gebäude Dienst – Reinigungsservice in [STADT]" />
+    <meta property="og:title" content="E&F Gebäude Dienst – Reinigungsservice in Ulm" />
     <meta property="og:description" content="Professionelle Reinigung für Privat & Gewerbe. Jetzt kostenloses Angebot anfordern." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="cover.jpg" />
@@ -53,6 +53,8 @@
     </script>
 </head>
 <body>
+    <div class="bg-anim" aria-hidden="true"></div>
+
     <!-- Cookie Banner -->
     <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
         <p>Wir verwenden Cookies, um unsere Website zu verbessern. <a href="#datenschutz">Mehr erfahren</a>.</p>
@@ -72,6 +74,8 @@
                 <a href="#leistungen">Leistungen</a>
                 <a href="#preise">Preise</a>
                 <a href="#bewertungen">Bewertungen</a>
+                <a href="#team">Das Team</a>        <!-- statt team.html -->
+                <a href="#ueber-uns">Über Uns</a>   <!-- statt ueber-uns.html -->
                 <a href="#kontakt" class="btn btn-small">Angebot</a>
             </nav>
             <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
@@ -177,6 +181,23 @@
             </div>
         </section>
 
+        <section id="ueber-uns" class="section alt">
+            <div class="container">
+                <h2>Über Uns</h2>
+                <p>E&F Gebäude Dienst wurde gegründet, um Kunden in Ulm und Umgebung zuverlässige, gründliche und faire Reinigungsservices zu bieten.</p>
+
+                <h3>Unsere Werte</h3>
+                <ul>
+                    <li>Zuverlässigkeit – Termine werden eingehalten</li>
+                    <li>Gründlichkeit – jedes Detail zählt</li>
+                    <li>Vertrauen – faires Preis-Leistungs-Verhältnis</li>
+                </ul>
+
+                <h3>Unsere Geschichte</h3>
+                <p>Hier kannst du etwas über die Entstehung des Unternehmens schreiben, warum es gegründet wurde, welche Ziele ihr habt usw.</p>
+            </div>
+        </section>
+
         <!-- Preise -->
         <section id="preise" class="section alt">
             <div class="container">
@@ -224,7 +245,7 @@
                 <div class="testimonials">
                     <blockquote>
                         <p>„Zuverlässig, gründlich, fair. Unser Büro glänzt – klare Empfehlung!“</p>
-                        <footer>— M. Schneider, [STADT]</footer>
+                        <footer>— D. Ferlinc, Neu-Ulm</footer>
                     </blockquote>
                     <blockquote>
                         <p>„Tolle Kommunikation und schnelle Terminvergabe. Fenster wie neu.“</p>
@@ -242,74 +263,64 @@
         <section class="section alt">
             <div class="container">
                 <h2>Einsatzgebiet</h2>
-                <p>Wir sind in <strong>[STADT]</strong> und Umgebung aktiv (Umkreis ca. 25 km).</p>
+                <p>Wir sind in <strong>Ulm</strong> und Umgebung aktiv (Umkreis ca. 25 km).</p>
                 <div class="map">
                     <!-- Optional: ersetzen Sie den src mit Ihrem Google Maps Embed Link -->
                     <iframe title="Karte von E&F Gebäude Dienst" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                            src="https://maps.google.com/maps?q=[STADT]&t=&z=12&ie=UTF8&iwloc=&output=embed"></iframe>
+                            src="https://maps.google.com/maps?q=Ulm&t=&z=12&ie=UTF8&iwloc=&output=embed"></iframe>
                 </div>
             </div>
         </section>
 
         <!-- Kontakt -->
         <section id="kontakt" class="section">
-            <div class="container contact-grid">
-                <div>
-                    <h2>Angebot anfordern</h2>
-                    <p>Beschreiben Sie kurz Ihr Objekt. Wir melden uns innerhalb von 24 Stunden.</p>
-                    <!-- Works on Netlify (name="contact") / use Formspree by replacing action -->
-                    <form class="form" name="contact" method="POST" data-netlify="true">
-                        <input type="hidden" name="form-name" value="contact" />
-                        <div class="field">
-                            <label for="name">Name*</label>
-                            <input id="name" name="name" type="text" required />
-                        </div>
-                        <div class="field">
-                            <label for="email">E-Mail*</label>
-                            <input id="email" name="email" type="email" required />
-                        </div>
-                        <div class="field">
-                            <label for="phone">Telefon</label>
-                            <input id="phone" name="phone" type="tel" />
-                        </div>
-                        <div class="field">
-                            <label for="service">Leistung</label>
-                            <select id="service" name="service">
-                                <option>Unterhaltsreinigung</option>
-                                <option>Büroreinigung</option>
-                                <option>Grund-/Sonderreinigung</option>
-                                <option>Fenster-/Glasreinigung</option>
-                                <option>Sonstiges</option>
-                            </select>
-                        </div>
-                        <div class="field">
-                            <label for="message">Nachricht*</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Objektgröße, Turnus, Adresse..."></textarea>
-                        </div>
-                        <div class="field checkbox">
-                            <input id="privacy" type="checkbox" required />
-                            <label for="privacy">Ich akzeptiere die <a href="#datenschutz">Datenschutzerklärung</a>.</label>
-                        </div>
-                        <button class="btn btn-primary" type="submit">Absenden</button>
-                    </form>
-                    <p class="contact-meta">
-                        Oder direkt: <a href="tel:+49[RUFNUMMER]">+49 [RUFNUMMER]</a> ·
-                        <a href="mailto:[INFO@DOMAIN]">[INFO@DOMAIN]</a>
-                    </p>
+            <div class="container">
+                <h2>Kontakt</h2>
+
+                <!-- Formular -->
+                <form action="mail.php" method="POST" class="form">
+                    <div class="field">
+                        <label for="name">Name*</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">E-Mail*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="message">Nachricht*</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Absenden</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="team" class="section debug">
+            <div class="container">
+                <h2>Unser Team</h2>
+                <p>Hier stellen wir die Menschen hinter E&F Gebäude Dienst vor.</p>
+
+                <div class="cards grid-3">
+                    <div class="card">
+                        <img src="IMG_6556Handy.png" alt="Mitarbeiter 1" style="width:100%; border-radius:12px;">
+                        <h3>Max Mustermann</h3>
+                        <p>Gründer & Geschäftsführer</p>
+                    </div>
+                    <div class="card">
+                        <img src="IMG_6553.png" alt="Mitarbeiter 2" style="width:100%; border-radius:12px;">
+                        <h3>Maria Musterfrau</h3>
+                        <p>Teamleiterin Reinigung</p>
+                    </div>
+                    <div class="card">
+                        <img src="IMG_6557handy.png" alt="Mitarbeiter 3" style="width:100%; border-radius:12px;">
+                        <h3>John Doe</h3>
+                        <p>Kundenservice</p>
+                    </div>
                 </div>
-                <aside class="contact-aside">
-                    <div class="info">
-                        <h3>Kontaktdaten</h3>
-                        <p>E&F Gebäude Dienst<br>[STRASSE HAUSNUMMER]<br>[PLZ] [STADT]</p>
-                        <p>Mo–Fr 08:00–18:00</p>
-                        <a class="btn btn-ghost" href="#impressum">Impressum</a>
-                    </div>
-                    <div class="badge">
-                        <span>Versichert</span>
-                        <span>Umweltfreundlich</span>
-                        <span>Regional</span>
-                    </div>
-                </aside>
             </div>
         </section>
     </main>
