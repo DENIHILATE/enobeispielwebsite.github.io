@@ -121,30 +121,25 @@ body {
 }
 
 .brand {
-    display: flex;
-    align-items: center; /* centers logo + text vertically */
-    gap: .6rem;
-    font-weight: 750;
-    font-size: 24px;
-    letter-spacing: .2px;
-    color: var(--text);
-    font-family: 'AkiraExpanded', sans-serif;
-    text-decoration: none;
+    display: inline-block;
 }
 
-    .brand img {
-        display: block; /* remove baseline gap under the image */
-        height: 28px; /* keep logo size consistent */
+    .brand .logo {
+        height: 60px;
+        width: auto;
+        display: block;
     }
 
-    .brand span {
-        line-height: 1; /* keeps text vertically centered with logo */
-    }
-
-    .brand.small {
-        font-size: .95rem;
-    }
-
+/* pill backdrop + animated sheen */
+.brand--sheen {
+    position: relative;
+    padding: 8px 16px;
+    border-radius: 14px;
+    background: rgba(255,255,255,.04);
+    backdrop-filter: blur(6px) saturate(1.05);
+    overflow: hidden;
+}
+S
 .nav-links {
     display: flex;
     gap: 1.2rem;
@@ -630,4 +625,20 @@ input, select, textarea {
 
     #team p {
         color: var(--muted, #a7b3c2);
+    }
+
+/* Footer links (Impressum, Datenschutz, etc.) */
+.footer-links a,
+.footer-links a:visited {
+    color: var(--text, lightblue);
+    text-decoration: underline;
+}
+
+    .footer-links a:hover {
+        color: var(--primary, lightblue);
+        text-decoration: underline; /* optional */
+    }
+
+    .footer-links a:active {
+        color: var(--brand-2, #22d3ee);
     }
