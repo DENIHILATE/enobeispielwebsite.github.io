@@ -56,14 +56,14 @@
     <div class="bg-anim" aria-hidden="true"></div>
 
     <!-- Cookie Banner -->
-    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
-        <p>Wir verwenden Cookies, um unsere Website zu verbessern. <a href="#datenschutz">Mehr erfahren</a>.</p>
-        <div class="cookie-actions">
-            <button id="cookieAccept" class="btn btn-primary">Zustimmen</button>
-            <button id="cookieDecline" class="btn btn-ghost">Ablehnen</button>
+    <!--    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+            <p>Wir verwenden Cookies, um unsere Website zu verbessern. <a href="#datenschutz">Mehr erfahren</a>.</p>
+            <div class="cookie-actions">
+                <button id="cookieAccept" class="btn btn-primary">Zustimmen</button>
+                <button id="cookieDecline" class="btn btn-ghost">Ablehnen</button>
+            </div>
         </div>
-    </div>
-
+    -->
     <header class="site-header">
         <div class="container nav">
             <div class="brand">
@@ -76,7 +76,7 @@
                 <a href="#bewertungen">Bewertungen</a>
                 <a href="#team">Das Team</a>        <!-- statt team.html -->
                 <a href="#ueber-uns">Über Uns</a>   <!-- statt ueber-uns.html -->
-                <a href="#kontakt" class="btn btn-small">Angebot</a>
+                <a href="#kontakt">Angebot</a>
             </nav>
             <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen">
                 <span></span><span></span><span></span>
@@ -211,8 +211,12 @@
                             <li>Flexible Termine</li>
                             <li>Umweltfreundliche Mittel</li>
                         </ul>
-                        <a class="btn btn-primary" href="#kontakt">Anfragen</a>
+                        <a class="btn btn-primary quote-btn"
+                           href="#kontakt"
+                           data-service="Privat"
+                           data-price="ab 24,90 €/Std">Anfragen</a>
                     </div>
+
                     <div class="price-card highlight" aria-label="Beliebteste Option">
                         <h3>Gewerbe</h3>
                         <p class="price">ab 28,90 €<span>/Std</span></p>
@@ -221,8 +225,12 @@
                             <li>Individuelle Leistungsverzeichnisse</li>
                             <li>After-Hours möglich</li>
                         </ul>
-                        <a class="btn btn-primary" href="#kontakt">Anfragen</a>
+                        <a class="btn btn-primary quote-btn"
+                           href="#kontakt"
+                           data-service="Gewerbe"
+                           data-price="ab 28,90 €/Std">Anfragen</a>
                     </div>
+
                     <div class="price-card">
                         <h3>Spezial</h3>
                         <p class="price">Angebot</p>
@@ -231,7 +239,10 @@
                             <li>Fenster/Glas</li>
                             <li>Festpreis nach Besichtigung</li>
                         </ul>
-                        <a class="btn btn-primary" href="#kontakt">Anfragen</a>
+                        <a class="btn btn-primary quote-btn"
+                           href="#kontakt"
+                           data-service="Spezial"
+                           data-price="nach Besichtigung">Anfragen</a>
                     </div>
                 </div>
                 <p class="note">Alle Preise zzgl. MwSt. für Gewerbe. Privatkunden inkl. MwSt. – Endpreise nach Objektgröße & Zustand.</p>
@@ -265,11 +276,15 @@
                 <h2>Einsatzgebiet</h2>
                 <p>Wir sind in <strong>Ulm</strong> und Umgebung aktiv.</p>
                 <div class="map">
-                    <!-- Optional: ersetzen Sie den src mit Ihrem Google Maps Embed Link -->
-                    <iframe title="Karte von E&F Gebäude Dienst" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                            src="https://maps.google.com/maps?q=Ulm&t=&z=12&ie=UTF8&iwloc=&output=embed"></iframe>
+                    <div class="map-overlay"></div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9794.095024219305!2d9.986715083332824!3d48.407699461550216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47996662ec32f649%3A0x154b0436844e4ce8!2sKarlstra%C3%9Fe%20100%2C%2089073%20Ulm!5e1!3m2!1sen!2sde!4v1758039594733!5m2!1sen!2sde"
+                            height="360"
+                            style="border:0; border-radius:16px;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
-            </div>
         </section>
 
         <!-- Kontakt -->
@@ -278,7 +293,7 @@
                 <h2>Kontakt</h2>
 
                 <!-- Formular -->
-                <form action="mail.php" method="POST" class="form">
+                <form id="contactForm" method="POST" class="form">
                     <div class="field">
                         <label for="name">Name*</label>
                         <input type="text" id="name" name="name" required>
@@ -289,15 +304,45 @@
                         <input type="email" id="email" name="email" required>
                     </div>
 
+                    <!-- Neues Feld für Quadratmeter -->
+                    <div class="field">
+                        <label for="qm">Quadratmeterfläche*</label>
+                        <input type="number" id="qm" name="qm" min="1" placeholder="z. B. 120"
+                               inputmode="numeric" pattern="\d*" required>
+                    </div>
+
+                    <!-- Neues Feld für Verschmutzungsgrad -->
+                    <div class="field">
+                        <label for="verschmutzung">Verschmutzungsgrad</label>
+                        <select id="verschmutzung" name="verschmutzung" class="styled-select">
+                            <option value="leicht">Leicht</option>
+                            <option value="mittel">Mittel</option>
+                            <option value="hoch">Hoch</option>
+                        </select>
+                    </div>
+
                     <div class="field">
                         <label for="message">Nachricht*</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
 
+                    <!-- Hidden Inputs für Service/Preis -->
+                    <input type="hidden" id="service" name="service">
+                    <input type="hidden" id="price" name="price">
+
                     <button type="submit" class="btn btn-primary">Absenden</button>
                 </form>
             </div>
         </section>
+
+        <!-- Danke-Popup -->
+        <div id="thankYouModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" id="closeModal">&times;</span>
+                <h2>Danke!</h2>
+                <p>Wir haben Ihre Anfrage erhalten.<br>Sie bekommen in Kürze eine Bestätigungs-E-Mail.</p>
+            </div>
+        </div>
 
         <!-- Team -->
         <section id="team" class="section debug">
@@ -333,28 +378,163 @@
                 <span>E&F Gebäudedienste</span>
             </div>
             <nav class="footer-links">
-                <a href="#impressum">Impressum</a>
-                <a href="#datenschutz">Datenschutz</a>
+                <a href="javascript:void(0)" onclick="openModal('impressumModal')">Impressum</a>
+                <a href="javascript:void(0)" onclick="openModal('datenschutzModal')">Datenschutz</a>
                 <a href="#leistungen">Leistungen</a>
                 <a href="#kontakt">Kontakt</a>
             </nav>
             <p class="copyright">© <span id="year"></span> E&F Gebäudedienste. Alle Rechte vorbehalten.</p>
         </div>
 
-        <!-- Simple placeholders for legal pages -->
-        <section id="impressum" class="legal">
-            <h2>Impressum</h2>
-            <p>[Verantwortlich nach § 5 TMG: E&F Gebäudedienste, Anschrift, Vertretungsberechtigte, USt-ID, Registerangaben]</p>
-        </section>
-        <section id="datenschutz" class="legal">
-            <h2>Datenschutzerklärung</h2>
-            <p>[Hinweise zu Kontaktformular, Hosting, Cookies, Analytik (falls vorhanden) etc.]</p>
-        </section>
+        <!-- Impressum Popup -->
+        <div id="impressumModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('impressumModal')">&times;</span>
+                <h1>Impressum</h1>
+
+                <p>
+                    Enis Berisa<br />
+                    E &amp; F Gebäudedienste<br />
+                    Karlstraße 100<br />
+                    89073 Ulm<br />
+                    Deutschland
+                </p>
+
+                <h2>Kontakt</h2>
+                <p>
+                    Telefon: +49 1556 5135363<br />
+                    E-Mail: EundF-Gebaeudedienste@outlook.de
+                </p>
+
+                <h2>Umsatzsteuer-ID</h2>
+                <p>
+                    Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+                    DE369050476
+                </p>
+
+                <h2>Angaben zur Berufshaftpflichtversicherung</h2>
+                <p>
+                    <strong>Name und Sitz des Versicherers:</strong><br />
+                    INTER Versicherungsgruppe Kompetenzcenter Ulm<br />
+                    Söflinger Str. 250<br />
+                    89077 Ulm
+                </p>
+                <p>
+                    <strong>Geltungsraum der Versicherung:</strong><br />
+                    Deutschland
+                </p>
+
+                <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+                <p>
+                    Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+                    Verbraucherschlichtungsstelle teilzunehmen.
+                </p>
+
+                <p>
+                    Quelle: <a href="https://www.e-recht24.de" target="_blank" rel="noopener noreferrer">eRecht24</a>
+                </p>
+            </div>
+        </div>
+
+
+        <!-- Datenschutz Popup -->
+        <div id="datenschutzModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('datenschutzModal')">&times;</span>
+                <h1>Datenschutzerklärung</h1>
+
+                <h2>1. Datenschutz auf einen Blick</h2>
+
+                <h3>Allgemeine Hinweise</h3>
+                <p>
+                    Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.
+                </p>
+
+                <h3>Datenerfassung auf dieser Website</h3>
+
+                <h4>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</h4>
+                <p>
+                    Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Abschnitt „Hinweis zur verantwortlichen Stelle“ in dieser Datenschutzerklärung entnehmen.
+                </p>
+
+                <h4>Wie erfassen wir Ihre Daten?</h4>
+                <p>
+                    Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.&nbsp;B. um Daten handeln, die Sie in ein Kontaktformular eingeben.
+                </p>
+                <p>
+                    Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.&nbsp;B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs). Die Erfassung dieser Daten erfolgt automatisch, sobald Sie diese Website betreten.
+                </p>
+
+                <h4>Wofür nutzen wir Ihre Daten?</h4>
+                <p>
+                    Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden. Sofern über die Website Verträge geschlossen oder angebahnt werden können, werden die übermittelten Daten auch für Vertragsangebote, Bestellungen oder sonstige Auftragsanfragen verarbeitet.
+                </p>
+
+                <h4>Welche Rechte haben Sie bezüglich Ihrer Daten?</h4>
+                <p>
+                    Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese Einwilligung jederzeit für die Zukunft widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.
+                </p>
+                <p>
+                    Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.
+                </p>
+
+                <h2>2. Hosting</h2>
+
+                <p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
+
+                <h3>Strato</h3>
+                <p>
+                    Anbieter ist die Strato AG, Otto-Ostrowski-Straße 7, 10249 Berlin (nachfolgend „Strato“). Wenn Sie unsere Website besuchen, erfasst Strato verschiedene Logfiles inklusive Ihrer IP-Adressen.
+                </p>
+                <p>
+                    Weitere Informationen entnehmen Sie der Datenschutzerklärung von Strato:
+                    <a href="https://www.strato.de/datenschutz/" target="_blank" rel="noopener noreferrer">
+                        https://www.strato.de/datenschutz/
+                    </a>
+                </p>
+                <p>
+                    Die Verwendung von Strato erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website. Sofern eine entsprechende Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG, soweit die Einwilligung die Speicherung von Cookies oder den Zugriff auf Informationen im Endgerät des Nutzers (z.&nbsp;B. Device-Fingerprinting) im Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.
+                </p>
+
+                <h4>Auftragsverarbeitung</h4>
+                <p>
+                    Wir haben einen Vertrag über Auftragsverarbeitung (AVV) zur Nutzung des oben genannten Dienstes geschlossen. Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.
+                </p>
+
+                <h2>3. Allgemeine Hinweise und Pflichtinformationen</h2>
+
+                <h3>Datenschutz</h3>
+                <p>
+                    Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.
+                </p>
+                <p>
+                    Wenn Sie diese Website benutzen, werden verschiedene personenbezogene Daten erhoben. Personenbezogene Daten sind Daten, mit denen Sie persönlich identifiziert werden können. Die vorliegende Datenschutzerklärung erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und zu welchem Zweck das geschieht.
+                </p>
+                <p>
+                    Wir weisen darauf hin, dass die Datenübertragung im Internet (z.&nbsp;B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
+                </p>
+
+                <h3>Hinweis zur verantwortlichen Stelle</h3>
+                <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+                <p>
+                    Enis Berisa<br />
+                    E &amp; F Gebäudedienste<br />
+                    Karlstraße 100<br />
+                    89073 Ulm<br />
+                    Deutschland
+                </p>
+                <p>
+                    Telefon: +49 1556 5135363<br />
+                    E-Mail: EundF-Gebaeudedienste@outlook.de
+                </p>
+                <p>
+                    Verantwortliche Stelle ist die natürliche oder juristische Person, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten (z. B. Namen, E-Mail-Adressen o. Ä.) entscheidet.
+                </p>
+
+            </div>
+        </div>
     </footer>
 
     <script src="script.js" defer></script>
 </body>
 </html>
-
-
-
